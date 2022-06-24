@@ -1,0 +1,16 @@
+spring:
+  application:
+    # 应用名称
+    name: natane
+  profiles:
+    active:
+      - druid
+server:
+  # 端口号
+  port: 8080
+  http2:
+    enabled: true
+
+bean-searcher:
+  sql:
+    dialect: MySQL

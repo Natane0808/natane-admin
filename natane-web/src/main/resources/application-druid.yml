@@ -1,0 +1,31 @@
+#数据库连接池配置
+spring:
+  datasource:
+    druid:
+      #数据库基本信息
+      url: jdbc:mysql://localhost:3306/bee?characterEncoding=UTF-8
+      username: root
+      password: root
+      #配置监控统计拦截的filters
+      filters: stat
+      #配置初始化大小、最小、最大
+      max-active: 20
+      initial-size: 5
+      min-idle: 10
+      #配置获取连接等待超时的时间
+      max-wait: 6000
+      #配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      time-between-eviction-runs-millis: 60000
+      #配置一个连接在池中最小生存的时间，单位是毫秒
+      min-evictable-idle-time-millis: 600000
+      max-evictable-idle-time-millis: 900000
+
+      validation-query: select 1
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+      async-init: true
+
+

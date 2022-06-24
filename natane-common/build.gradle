@@ -1,0 +1,10 @@
+dependencies {
+
+
+    // https://mvnrepository.com/artifact/com.alibaba.fastjson2/fastjson2
+    api group: 'com.alibaba.fastjson2', name: 'fastjson2', version: fastjsonVersion
+
+    // https://mvnrepository.com/artifact/com.ejlchina/bean-searcher
+    api group: 'com.ejlchina', name: 'bean-searcher-boot-starter', version: beanSearcherVersion
+
+}

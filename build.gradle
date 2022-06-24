@@ -1,0 +1,80 @@
+plugins {
+    id 'org.springframework.boot' version '3.0.0-M2'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java-library'
+}
+
+//所有工程配置
+allprojects {
+
+    //默认JDK版本
+    sourceCompatibility = JavaVersion.VERSION_17
+
+    //项目版本
+    group = 'com.natane'
+    version = '0.0.1-SNAPSHOT'
+
+    //仓库地址
+    repositories {
+        //优先使用本地
+        mavenLocal()
+        //阿里云
+        maven {
+            url 'https://maven.aliyun.com/nexus/content/groups/public/'
+        }
+        //spring
+        maven {
+            url 'https://repo.spring.io/milestone'
+        }
+        mavenCentral()
+    }
+
+    //插件配置
+    apply plugin: 'java-library'
+    apply plugin: 'idea'
+
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
+    //是否默认打包为springboot可执行jar包
+    bootJar {
+        enabled = false
+    }
+
+}
+
+
+subprojects {
+
+    ext {
+        //fastjson2
+        fastjsonVersion = '2.0.1'
+        //mysql驱动
+        mysqlConnectorVersion = '8.0.28'
+        //阿里druid数据库连接池
+        druidVersionVersion = '1.2.9'
+        //Bean Searcher  ORM框架
+        beanSearcherVersion = '3.6.0'
+    }
+
+    //依赖
+    dependencies {
+        //spring依赖
+        implementation group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc'
+        implementation group: 'org.springframework.boot', name: 'spring-boot-devtools'
+
+        implementation group: 'mysql', name: 'mysql-connector-java', version: mysqlConnectorVersion
+
+        implementation group: 'com.alibaba', name: 'druid-spring-boot-starter', version: druidVersionVersion
+
+        testImplementation(group: 'org.springframework.boot', name: 'spring-boot-starter-test') {
+            exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+        }
+    }
+
+}
+
+
+test {
+    useJUnitPlatform()
+}
