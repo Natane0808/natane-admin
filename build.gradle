@@ -54,7 +54,7 @@ subprojects {
         //阿里druid数据库连接池
         druidVersionVersion = '1.2.9'
         //Bean Searcher  ORM框架
-        beanSearcherVersion = '3.6.0'
+        beanSearcherVersion = '3.7.1'
     }
 
     //依赖

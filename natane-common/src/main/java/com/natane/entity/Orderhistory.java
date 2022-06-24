@@ -5,6 +5,7 @@
  */
 
 package com.natane.entity;
+
 import com.ejlchina.searcher.bean.DbField;
 
 import java.io.Serial;
@@ -14,19 +15,19 @@ import java.sql.Timestamp;
 
 /**
  * @author AiTeaSoft.com
- * @since  1.0
+ * @since 1.0
  * Create on 2019-04-16 11:48:24
  */
 public class Orderhistory implements Serializable {
 
-	@Serial
+    @Serial
     private static final long serialVersionUID = 15960497491733462L;
 
 
     private Integer id;
     private String name;
     private String orderNo;
-    private String seqNO;
+    private String seqNo;
     private BigDecimal num;
     private String numFlag;
     private String type;
@@ -35,83 +36,83 @@ public class Orderhistory implements Serializable {
     private String remark;
 
     public Integer getId() {
-	return id;
+        return id;
     }
 
     public void setId(Integer id) {
-	this.id = id;
+        this.id = id;
     }
-   
+
     public String getName() {
-	return name;
+        return name;
     }
 
     public void setName(String name) {
-	this.name = name;
+        this.name = name;
     }
-   
+
     public String getOrderNo() {
-	return orderNo;
+        return orderNo;
     }
 
     public void setOrderNo(String orderNo) {
-	this.orderNo = orderNo;
-    }
-   
-    public String getSeqNO() {
-	return seqNO;
+        this.orderNo = orderNo;
     }
 
-    public void setSeqNO(String seqNO) {
-	this.seqNO = seqNO;
+    public String getSeqNo() {
+        return seqNo;
     }
-   
+
+    public void setSeqNo(String seqNo) {
+        this.seqNo = seqNo;
+    }
+
     public BigDecimal getNum() {
-	return num;
+        return num;
     }
 
     public void setNum(BigDecimal num) {
-	this.num = num;
+        this.num = num;
     }
-   
+
     public String getNumFlag() {
-	return numFlag;
+        return numFlag;
     }
 
     public void setNumFlag(String numFlag) {
-	this.numFlag = numFlag;
+        this.numFlag = numFlag;
     }
-   
+
     public String getType() {
-	return type;
+        return type;
     }
 
     public void setType(String type) {
-	this.type = type;
+        this.type = type;
     }
-   
+
     public String getDetail() {
-	return detail;
+        return detail;
     }
 
     public void setDetail(String detail) {
-	this.detail = detail;
+        this.detail = detail;
     }
-   
+
     public Timestamp getDatetime() {
-	return datetime;
+        return datetime;
     }
 
     public void setDatetime(Timestamp datetime) {
-	this.datetime = datetime;
+        this.datetime = datetime;
     }
-   
+
     public String getRemark() {
-	return remark;
+        return remark;
     }
 
     public void setRemark(String remark) {
-	this.remark = remark;
+        this.remark = remark;
     }
 
 
@@ -121,7 +122,7 @@ public class Orderhistory implements Serializable {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", orderNo='" + orderNo + '\'' +
-                ", seqNO='" + seqNO + '\'' +
+                ", seqNo='" + seqNo + '\'' +
                 ", num=" + num +
                 ", numFlag='" + numFlag + '\'' +
                 ", type='" + type + '\'' +

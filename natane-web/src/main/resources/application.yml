@@ -13,4 +13,10 @@ server:
 
 bean-searcher:
   sql:
+    default-mapping:
+      underline-case: true
+    #慢sql(ms)默认为 500
+    slow-sql-threshold: 1000
+    #方言
     dialect: MySQL
+
