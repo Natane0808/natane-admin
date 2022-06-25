@@ -1,6 +1,6 @@
 plugins {
-    id 'org.springframework.boot' version '3.0.0-M2'
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'org.springframework.boot' version '3.0.0-SNAPSHOT'
+    id "io.spring.dependency-management" version "1.0.11.RELEASE"
     id 'java-library'
 }
 
@@ -14,19 +14,10 @@ allprojects {
     group = 'com.natane'
     version = '0.0.1-SNAPSHOT'
 
-    //仓库地址
     repositories {
-        //优先使用本地
-        mavenLocal()
-        //阿里云
-        maven {
-            url 'https://maven.aliyun.com/nexus/content/groups/public/'
-        }
-        //spring
-        maven {
-            url 'https://repo.spring.io/milestone'
-        }
         mavenCentral()
+        maven { url 'https://repo.spring.io/milestone' }
+        maven { url 'https://repo.spring.io/snapshot' }
     }
 
     //插件配置
@@ -47,14 +38,19 @@ allprojects {
 subprojects {
 
     ext {
-        //fastjson2
-        fastjsonVersion = '2.0.1'
-        //mysql驱动
-        mysqlConnectorVersion = '8.0.28'
-        //阿里druid数据库连接池
-        druidVersionVersion = '1.2.9'
-        //Bean Searcher  ORM框架
+        /*版本号管理*/
+        //fastjson2  https://mvnrepository.com/artifact/com.alibaba.fastjson2/fastjson2
+        fastjsonVersion = '2.0.7'
+        //mysql驱动    https://mvnrepository.com/artifact/mysql/mysql-connector-java
+        mysqlConnectorVersion = '8.0.29'
+        //阿里druid数据库连接池   https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter
+        druidVersionVersion = '1.2.11'
+        //Bean Searcher  ORM框架  https://mvnrepository.com/artifact/com.ejlchina/bean-searcher
         beanSearcherVersion = '3.7.1'
+        //实用工具类   https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+        commonsVersion = '3.12.0'
+        //Token生成与解析  https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt
+        jjwtVersion = '0.9.1'
     }
 
     //依赖

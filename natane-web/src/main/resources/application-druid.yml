@@ -2,30 +2,58 @@
 spring:
   datasource:
     druid:
-      #数据库基本信息
-      url: jdbc:mysql://localhost:3306/bee?characterEncoding=UTF-8
-      username: root
-      password: root
-      #配置监控统计拦截的filters
-      filters: stat
-      #配置初始化大小、最小、最大
-      max-active: 20
-      initial-size: 5
-      min-idle: 10
-      #配置获取连接等待超时的时间
-      max-wait: 6000
-      #配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
-      time-between-eviction-runs-millis: 60000
-      #配置一个连接在池中最小生存的时间，单位是毫秒
-      min-evictable-idle-time-millis: 600000
-      max-evictable-idle-time-millis: 900000
+      master:
+        #主数据库
+        url: jdbc:mysql://localhost:3306/bee?characterEncoding=UTF-8
+        username: root
+        password: root
+      slave:
+        # 从数据源开关/默认关闭
+        enabled: false
+        url:
+        username:
+        password:
+        #从库信息
+      # 初始连接数
+      initialSize: 5
+      # 最小连接池数量
+      minIdle: 10
+      # 最大连接池数量
+      maxActive: 20
+      # 配置获取连接等待超时的时间
+      maxWait: 60000
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      timeBetweenEvictionRunsMillis: 60000
+      # 配置一个连接在池中最小生存的时间，单位是毫秒
+      minEvictableIdleTimeMillis: 300000
+      # 配置一个连接在池中最大生存的时间，单位是毫秒
+      maxEvictableIdleTimeMillis: 900000
+      # 配置检测连接是否有效
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      webStatFilter:
+        enabled: false
+      statViewServlet:
+        enabled: false
+        # 设置白名单，不填则允许所有访问
+        allow:
+        url-pattern: /druid/*
+        # 控制台管理用户名和密码
+        login-username: natane
+        login-password: 123456
+      filter:
+        stat:
+          enabled: true
+          # 慢SQL记录
+          log-slow-sql: true
+          slow-sql-millis: 1000
+          merge-sql: true
+        wall:
+          config:
+            multi-statement-allow: true
 
-      validation-query: select 1
-      test-while-idle: true
-      test-on-borrow: false
-      test-on-return: false
-      pool-prepared-statements: true
-      max-open-prepared-statements: 20
-      async-init: true
+
 
 
