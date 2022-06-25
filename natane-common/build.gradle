@@ -12,8 +12,8 @@ dependencies {
     implementation group: 'io.jsonwebtoken', name: 'jjwt', version: jjwtVersion
 
     api group: 'org.springframework.boot', name: 'spring-boot-starter-web'
+    //加入AOP切面依赖
     api group: 'org.springframework.boot', name: 'spring-boot-starter-aop'
-
 
 
 }
