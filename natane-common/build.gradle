@@ -1,10 +1,19 @@
 dependencies {
-
-
-    // https://mvnrepository.com/artifact/com.alibaba.fastjson2/fastjson2
+    //fastjson2
     api group: 'com.alibaba.fastjson2', name: 'fastjson2', version: fastjsonVersion
 
-    // https://mvnrepository.com/artifact/com.ejlchina/bean-searcher
+    //bean search ORM框架
     api group: 'com.ejlchina', name: 'bean-searcher-boot-starter', version: beanSearcherVersion
+
+    //实用工具类
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: commonsVersion
+
+    //Token生成与解析
+    implementation group: 'io.jsonwebtoken', name: 'jjwt', version: jjwtVersion
+
+    api group: 'org.springframework.boot', name: 'spring-boot-starter-web'
+    //加入AOP切面依赖
+    api group: 'org.springframework.boot', name: 'spring-boot-starter-aop'
+
 
 }
