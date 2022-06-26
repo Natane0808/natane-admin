@@ -8,18 +8,18 @@ import com.natane.common.excepiton.base.BaseException;
  * @author natane
  * @date 2022/6/26
  */
-public class BusinessException extends BaseException {
+public class BizException extends BaseException {
 
     /**
      * 响应码
      */
     private int code;
 
-    public BusinessException() {
+    public BizException() {
     }
 
 
-    public BusinessException(int code, String message) {
+    public BizException(int code, String message) {
         super(message);
         this.code = code;
     }

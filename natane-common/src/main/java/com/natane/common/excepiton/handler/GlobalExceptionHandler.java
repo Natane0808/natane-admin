@@ -2,7 +2,7 @@ package com.natane.common.excepiton.handler;
 
 import com.natane.common.constant.ResultCode;
 import com.natane.common.entity.Result;
-import com.natane.common.excepiton.BusinessException;
+import com.natane.common.excepiton.BizException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -37,9 +37,9 @@ public class GlobalExceptionHandler {
     /**
      * 业务异常处理方法
      */
-    @ExceptionHandler(BusinessException.class)
+    @ExceptionHandler(BizException.class)
     @ResponseBody
-    public Result error(BusinessException e) {
+    public Result error(BizException e) {
         e.printStackTrace();
         return Result.error(e.getCode(), e.getMessage());
     }

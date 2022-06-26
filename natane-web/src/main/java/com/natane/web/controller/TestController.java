@@ -1,11 +1,12 @@
 package com.natane.web.controller;
 
-import com.alibaba.fastjson2.JSON;
 import com.ejlchina.searcher.MapSearcher;
 import com.ejlchina.searcher.SearchResult;
-import com.natane.common.asserts.BusinessAssert;
+import com.natane.common.asserts.BizAssert;
+import com.natane.common.entity.Result;
 import com.natane.entity.Orderhistory;
 import com.natane.web.service.TestService;
+import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,10 +33,10 @@ public class TestController {
     }
 
     @GetMapping("/getBeeData")
-    public String getBeeData(Integer id) {
+    public Result getBeeData(Integer id, HttpServletResponse response) {
         logger.info("输入的id为{}", id);
         SearchResult<Orderhistory> testInfo = testService.getTestInfo(id);
-        BusinessAssert.getAssert(testInfo).isTrue(SearchResult::getDataList, 666, "aaa");
-        return JSON.toJSONString(testInfo);
+        BizAssert.isNotNull(testInfo, 6666, "对象为空");
+        return Result.success(testInfo);
     }
 }

@@ -90,7 +90,7 @@ public final class ResultCode {
     /**
      * 空指针
      */
-    public static final int NULL_POINTER = 2001;
+    public static final int NULL_POINTER = 600;
 
 
 }
