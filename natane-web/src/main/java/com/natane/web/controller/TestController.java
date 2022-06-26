@@ -3,6 +3,7 @@ package com.natane.web.controller;
 import com.alibaba.fastjson2.JSON;
 import com.ejlchina.searcher.MapSearcher;
 import com.ejlchina.searcher.SearchResult;
+import com.natane.common.asserts.BusinessAssert;
 import com.natane.entity.Orderhistory;
 import com.natane.web.service.TestService;
 import org.slf4j.Logger;
@@ -34,6 +35,7 @@ public class TestController {
     public String getBeeData(Integer id) {
         logger.info("输入的id为{}", id);
         SearchResult<Orderhistory> testInfo = testService.getTestInfo(id);
+        BusinessAssert.getAssert(testInfo).isTrue(SearchResult::getDataList, 666, "aaa");
         return JSON.toJSONString(testInfo);
     }
 }

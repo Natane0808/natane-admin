@@ -1,10 +1,4 @@
-spring:
-  application:
-    # 应用名称
-    name: natane
-  profiles:
-    active:
-      - druid
+#开发环境配置
 server:
   # 端口号
   port: 8080
@@ -20,6 +14,30 @@ server:
       min-spare: 100
   http2:
     enabled: true
+
+
+#sping配置
+spring:
+  # 资源信息
+  messages:
+    # 国际化资源文件路径
+    basename: i18n/messages
+  #配置文件使用
+  profiles:
+    active:
+      - druid
+  # 文件上传
+  servlet:
+    multipart:
+      # 单个文件大小
+      max-file-size: 10MB
+      # 设置总上传的文件大小
+      max-request-size: 20MB
+  # 服务模块
+  devtools:
+    restart:
+      # 热部署开关
+      enabled: true
 
 bean-searcher:
   sql:
