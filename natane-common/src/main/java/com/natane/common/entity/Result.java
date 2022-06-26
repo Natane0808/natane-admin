@@ -18,6 +18,11 @@ public class Result extends HashMap<String, Object> {
     private static final long serialVersionUID = -7407810730608157069L;
 
     /**
+     * 是否成功
+     */
+    public static final String IS_SUCCESS = "success";
+
+    /**
      * 状态码
      */
     public static final String CODE = "code";
@@ -41,10 +46,12 @@ public class Result extends HashMap<String, Object> {
     /**
      * 初始化一个新创建的 Result 对象
      *
-     * @param code 状态码
-     * @param msg  返回内容
+     * @param isSuccess 是否成功
+     * @param code      状态码
+     * @param msg       返回内容
      */
-    public Result(int code, String msg) {
+    public Result(boolean isSuccess, int code, String msg) {
+        super.put(IS_SUCCESS, isSuccess);
         super.put(CODE, code);
         super.put(MSG, msg);
     }
@@ -52,11 +59,13 @@ public class Result extends HashMap<String, Object> {
     /**
      * 初始化一个新创建的 Result 对象
      *
-     * @param code 状态码
-     * @param msg  返回内容
-     * @param data 数据对象
+     * @param isSuccess 是否成功
+     * @param code      状态码
+     * @param msg       返回内容
+     * @param data      数据对象
      */
-    public Result(int code, String msg, Object data) {
+    public Result(boolean isSuccess, int code, String msg, Object data) {
+        super.put(IS_SUCCESS, isSuccess);
         super.put(CODE, code);
         super.put(MSG, msg);
         if (StringUtils.isNotNull(data)) {
@@ -100,7 +109,7 @@ public class Result extends HashMap<String, Object> {
      * @return 成功消息
      */
     public static Result success(String msg, Object data) {
-        return new Result(ResultCode.SUCCESS, msg, data);
+        return new Result(true, ResultCode.SUCCESS, msg, data);
     }
 
     /**
@@ -130,7 +139,7 @@ public class Result extends HashMap<String, Object> {
      * @return 错误消息
      */
     public static Result error(String msg, Object data) {
-        return new Result(ResultCode.ERROR, msg, data);
+        return new Result(false, ResultCode.ERROR, msg, data);
     }
 
     /**
@@ -141,7 +150,7 @@ public class Result extends HashMap<String, Object> {
      * @return 错误消息
      */
     public static Result error(int code, String msg) {
-        return new Result(code, msg, null);
+        return new Result(false, code, msg, null);
     }
 
     /**
