@@ -2,9 +2,6 @@ dependencies {
     //fastjson2
     api group: 'com.alibaba.fastjson2', name: 'fastjson2', version: fastjsonVersion
 
-    //bean search ORM框架
-    api group: 'com.ejlchina', name: 'bean-searcher-boot-starter', version: beanSearcherVersion
-
     //实用工具类
     implementation group: 'org.apache.commons', name: 'commons-lang3', version: commonsVersion
 

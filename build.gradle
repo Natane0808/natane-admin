@@ -46,12 +46,14 @@ subprojects {
         mysqlConnectorVersion = '8.0.29'
         //阿里druid数据库连接池   https://mvnrepository.com/artifact/com.alibaba/druid-spring-boot-starter
         druidVersionVersion = '1.2.11'
-        //Bean Searcher  ORM框架  https://mvnrepository.com/artifact/com.ejlchina/bean-searcher
-        beanSearcherVersion = '3.7.1'
         //实用工具类   https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
         commonsVersion = '3.12.0'
         //Token生成与解析  https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt
         jjwtVersion = '0.9.1'
+        //mybatis   https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter
+        mybatisVersion = '2.2.2'
+        //mybatis-mapper  通用mapper依赖   https://mvnrepository.com/artifact/io.mybatis/mybatis-mapper
+        mybatisMapperVersion = '1.2.2'
     }
 
     //依赖
@@ -61,6 +63,14 @@ subprojects {
         implementation group: 'org.springframework.boot', name: 'spring-boot-devtools'
 
         implementation group: 'mysql', name: 'mysql-connector-java', version: mysqlConnectorVersion
+
+        implementation group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: mybatisVersion
+
+        implementation group: 'io.mybatis', name: 'mybatis-mapper', version: mybatisMapperVersion
+
+        implementation group: 'io.mybatis', name: 'mybatis-service', version: mybatisMapperVersion
+
+        implementation group: 'io.mybatis', name: 'mybatis-activerecord', version: mybatisMapperVersion
 
         implementation group: 'com.alibaba', name: 'druid-spring-boot-starter', version: druidVersionVersion
 

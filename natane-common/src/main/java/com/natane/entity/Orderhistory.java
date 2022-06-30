@@ -6,33 +6,45 @@
 
 package com.natane.entity;
 
-import com.ejlchina.searcher.bean.DbField;
+import io.mybatis.provider.Entity;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
+
 /**
- * @author AiTeaSoft.com
- * @since 1.0
- * Create on 2019-04-16 11:48:24
+ * orderhistory
+ *
+ * @author CZ
+ * @date 2022/06/30
  */
+@Entity.Table("orderhistory")
 public class Orderhistory implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 15960497491733462L;
 
-
+    @Entity.Column(id = true, remark = "主键")
     private Integer id;
+    @Entity.Column(value = "name", remark = "名称")
     private String name;
+    @Entity.Column(value = "order_no", remark = "订单号")
     private String orderNo;
+    @Entity.Column(value = "seq_no", remark = "流水号")
     private String seqNo;
+    @Entity.Column(value = "num", remark = "数量")
     private BigDecimal num;
+    @Entity.Column(value = "num_flag")
     private String numFlag;
+    @Entity.Column(remark = "类型")
     private String type;
+    @Entity.Column(remark = "详细")
     private String detail;
+    @Entity.Column(remark = "时间")
     private Timestamp datetime;
+    @Entity.Column(remark = "备注")
     private String remark;
 
     public Integer getId() {

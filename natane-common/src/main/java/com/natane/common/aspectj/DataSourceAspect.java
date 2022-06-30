@@ -10,6 +10,7 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -25,6 +26,7 @@ import java.util.Objects;
 @Aspect
 @Order(1)
 @Component
+@EnableAspectJAutoProxy(proxyTargetClass = true, exposeProxy = true)
 public class DataSourceAspect {
     protected Logger logger = LoggerFactory.getLogger(getClass());
 

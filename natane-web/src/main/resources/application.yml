@@ -39,12 +39,13 @@ spring:
       # 热部署开关
       enabled: true
 
-bean-searcher:
-  sql:
-    default-mapping:
-      underline-case: true
-    #慢sql(ms)默认为 500
-    slow-sql-threshold: 1000
-    #方言
-    dialect: MySQL
+## mybatis 配置
+mybatis:
+  mapper-locations: classpath:/mappers/*.xml # 扫描mybatis的实现dao接口*.xml文件
+  configuration:
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
 
+logging:
+  level:
+    com.natane: debug
+    org.springframework: warn
