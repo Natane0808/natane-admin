@@ -7,7 +7,6 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
-import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
@@ -26,12 +25,14 @@ import java.util.Objects;
 @Aspect
 @Order(1)
 @Component
-@EnableAspectJAutoProxy(proxyTargetClass = true, exposeProxy = true)
+@EnableAspectJAutoProxy
 public class DataSourceAspect {
-    protected Logger logger = LoggerFactory.getLogger(getClass());
+
+    private final static Logger logger = LoggerFactory.getLogger(DataSourceAspect.class);
 
     @Pointcut("@annotation(com.natane.common.annotation.DataSource)"
-            + "|| @within(com.natane.common.annotation.DataSource)")
+            + "|| @within(com.natane.common.annotation.DataSource)"
+            + "|| within(io.mybatis.service.AbstractService)")
     public void dsPointCut() {
 
     }
@@ -56,12 +57,11 @@ public class DataSourceAspect {
      * 获取需要切换的数据源
      */
     public DataSource getDataSource(ProceedingJoinPoint point) {
-        MethodSignature signature = (MethodSignature) point.getSignature();
-        DataSource dataSource = AnnotationUtils.findAnnotation(signature.getMethod(), DataSource.class);
+        DataSource dataSource = AnnotationUtils.findAnnotation(point.getTarget().getClass(), DataSource.class);
         if (Objects.nonNull(dataSource)) {
             return dataSource;
         }
 
-        return AnnotationUtils.findAnnotation(signature.getDeclaringType(), DataSource.class);
+        return AnnotationUtils.findAnnotation(point.getTarget().getClass(), DataSource.class);
     }
 }
