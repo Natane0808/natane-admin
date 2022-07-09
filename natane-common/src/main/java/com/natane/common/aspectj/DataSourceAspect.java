@@ -7,9 +7,11 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.core.annotation.AnnotatedElementUtils;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -31,8 +33,7 @@ public class DataSourceAspect {
     private final static Logger logger = LoggerFactory.getLogger(DataSourceAspect.class);
 
     @Pointcut("@annotation(com.natane.common.annotation.DataSource)"
-            + "|| @within(com.natane.common.annotation.DataSource)"
-            + "|| within(io.mybatis.service.AbstractService)")
+            + "|| @within(com.natane.common.annotation.DataSource)")
     public void dsPointCut() {
 
     }
